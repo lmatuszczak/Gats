@@ -1,0 +1,252 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap);
+* {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-color: #F1F1F1;
+}
+
+@media (min-width: 1440px) {
+    nav {
+        background-color: #4E5975;
+        height: 80px;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+    }
+    nav img {
+        background-color: #4E5975;
+        height: 50px;
+    }
+    nav a {
+        background-color: #4E5975;
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+    nav a:hover {
+        opacity: 0.7;
+    }
+    nav #wrapperNav {
+        height: 80px;
+    }
+    nav #wrapperNav div {
+        display: flex;
+        align-self: center;
+        font-size: 36px;
+        font-weight: bold;
+        color: #FFFFFF;
+        height: 80px;
+        align-items: center;
+        justify-items: center;
+        margin: 0 auto;
+    }
+    nav #wrapperNav #navLink div {
+        margin: 0 auto;
+    }
+    nav #wrapperNav #navLink div:nth-child(2) {
+        padding: 0 80px;
+    }
+    nav #wrapperNav #navContainer {
+        width: 950px;
+    }
+    nav #nav-col-1 {
+        padding-right: 176px;
+    }
+    nav #nav-col-5 {
+        position: absolute;
+        top: 0;
+        right: 30px;
+    }
+
+    main {
+        width: 950px;
+        margin: 40px auto 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    main #main-left-column {
+        width: 583px;
+    }
+    main #main-left-column article {
+        height: 100px;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        margin-top: 20px;
+        display: block;
+    }
+    main #main-left-column article .articleHeader-row-1 {
+        display: flex;
+        align-items: center;
+    }
+    main #main-left-column article .articleHeader-row-1 .titleArticle {
+        margin: 7px 0 0 22px;
+    }
+    main #main-left-column article .articleHeader-row-1 .titleArticle a {
+        color: #4E409F;
+        font-size: 24px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    main #main-left-column article .articleHeader-row-1 .titleArticle a:hover {
+        opacity: 0.6;
+    }
+    main #main-left-column article .articleHeader-row-1 .containerAnswer {
+        display: inline-block;
+        margin: 7px 0 0 7px;
+        align-items: center;
+    }
+    main #main-left-column article .articleHeader-row-1 .answer {
+        height: 50px;
+        width: 135px;
+        border-radius: 10px;
+        background-color: #E6E6E6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    main #main-left-column article .articleHeader-row-1 .answer p {
+        font-weight: bold;
+        opacity: 0.3;
+    }
+    main #main-left-column article .articleHeader-row-1 .answer p:nth-child(1) {
+        font-size: 36px;
+        margin-right: 6px;
+    }
+    main #main-left-column article .articleHeader-row-1 .answer p:nth-child(2) {
+        font-size: 18px;
+    }
+    main #main-left-column article .articleHeader-row-2 {
+        display: flex;
+        align-items: center;
+        height: 44px;
+    }
+    main #main-left-column article .articleHeader-row-2 .viewArticle {
+        margin-left: 54px;
+        width: 50px;
+        margin-right: 42px;
+        font-size: 13px;
+        opacity: 0.7;
+    }
+    main #main-left-column article .articleHeader-row-2 .categories {
+        width: 272px;
+    }
+    main #main-left-column article .articleHeader-row-2 .categories .category {
+        float: left;
+        background-color: #4E5975;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #FFFFFF;
+        padding: 4px 9px;
+        margin-left: 16px;
+    }
+    main #main-left-column article .articleHeader-row-2 .categories .category:hover {
+        opacity: 0.7;
+    }
+    main #main-left-column article .articleHeader-row-2 .dateArticle {
+        margin-left: 69px;
+        margin-right: 13px;
+        opacity: 0.45;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    main #main-right-column {
+        width: 337px;
+    }
+
+    .headerMain {
+        display: flex;
+        background-color: #A9A7FB;
+        height: 53px;
+        color: #FFFFFF;
+        border-radius: 10px;
+        align-items: center;
+    }
+    .headerMain h1 {
+        font-weight: bold;
+        margin-left: 22px;
+        font-size: 1.5em;
+    }
+
+    #webSort {
+        justify-content: space-around;
+    }
+
+    #asideComment {
+        margin-top: 20px;
+        height: 245px;
+        background-color: #4E5975;
+        border-radius: 10px;
+        color: #FFFFFF;
+    }
+    #asideComment h1 {
+        text-align: center;
+        font-size: 24px;
+        padding-top: 9px;
+    }
+    #asideComment hr {
+        width: 300px;
+        margin: 0 auto;
+        color: #FFFFFF;
+    }
+    #asideComment ol {
+        font-size: 20px;
+        margin: 10px 0 0 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    #asideComment li {
+        margin: 5px 0;
+    }
+    #asideComment li span {
+        float: right;
+        font-size: 15px;
+        margin-right: 25px;
+        background-color: #A9A7FB;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    #asideRegulations {
+        margin-top: 20px;
+        height: 280px;
+        background-color: #A9A7FB;
+        border-radius: 10px;
+        color: #FFFFFF;
+    }
+    #asideRegulations h1 {
+        text-align: center;
+        font-size: 24px;
+        padding-top: 9px;
+    }
+    #asideRegulations hr {
+        width: 300px;
+        margin: 0 auto;
+        color: #FFFFFF;
+    }
+    #asideRegulations ol {
+        font-size: 20px;
+        margin: 10px 0 0 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    #asideRegulations li {
+        margin: 5px 0;
+    }
+
+    footer {
+        height: 100px;
+        background-color: #4E5975;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        color: #FFFFFF;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+    }
+}
