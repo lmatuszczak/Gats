@@ -12,7 +12,7 @@
     <div id="wrapperNav">
         <div id="navContainer">
             <div id="nav-col-1">
-                <a href="#">
+                <a href="index.php">
                     LOGO
                 </a>
             </div>
@@ -23,8 +23,8 @@
             </div>
         </div>
         <div id="nav-col-5">
-            <a href="#">
-                <img src="/img/paw.svg" alt="imageLogin">
+            <a href="login.php">
+                <img src="img/paw.svg" alt="imageLogin">
             </a>
         </div>
     </div>
@@ -202,7 +202,7 @@
                 <h1>
                     Zmień sortowanie
                 </h1>
-                <img src="/img/sortButton.svg">
+                <img src="img/sortButton.svg">
             </div>
             <div id="asideComment">
                 <h1>Najczesciej komentowane</h1>
