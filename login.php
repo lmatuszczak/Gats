@@ -1,3 +1,7 @@
+<?php
+    require './connect.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +11,12 @@
     <title>Logowanie - Forum</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+      #maincolor{
+        background-color:#4E5975 !important;
+      }
+    </style>
 </head>
 <body>
     <div class="container">

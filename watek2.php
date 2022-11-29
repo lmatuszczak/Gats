@@ -1,3 +1,7 @@
+<?php
+    require './connect.php';
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -11,67 +15,22 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <title>Forum do czegoś</title>
+
+    <style>
+      #maincolor{
+        background-color:#4E5975 !important;
+      }
+    </style>
 </head>
 
 <body>
-
-
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/projekt">Forummm</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/projekt">Strona główna <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cośtam1</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Cośtam2
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#" tabindex="-1">Kontakt</a>
-                </li>
-            </ul>
-            <div class="mx-2">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                <button class="btn btn-primary ml-2">Zaloguj się</button>
-                <button class="btn btn-primary mx-2">Zarejestruj się</button>
-            </div>
-
-        </div>
-    </nav>
+    <?php include('./navbar.php')?>
 
     <!-- <?php include 'connect.php';?> -->
     <?php 
         $id = $_GET['threadsid'];
         $sql = "SELECT * FROM `threads` WHERE threads_id=$id";
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "php_forum";
 
-       
-        
-        $conn = mysqli_connect($servername, $username, $password, $database);
         $result = mysqli_query($conn, $sql) or trigger_error(mysqli_error($conn));
         while($row = mysqli_fetch_assoc($result)){
             $title = $row['thread_title'];
@@ -143,7 +102,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "php_forum";
+        $database = "phpforum";
 
        
         
