@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    // if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true))
+    // {
+    //     header('Location: index.php');
+    // }
+?>
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -26,6 +34,7 @@
             <a href="login.php">
                 <img src="img/paw.svg" alt="imageLogin">
             </a>
+            <?php if(isset($_SESSION['zalogowany'])) echo '<p><a href="logout.php">Wyloguj się</a></p>' ?>
         </div>
     </div>
 </nav>
@@ -231,6 +240,6 @@
 
     </aside>
 </main>
-<footer>Copyright © 2022</footer>
+<footer>Copyright © 2022 <?php if(isset($_SESSION['userLog'])) echo $_SESSION['userLog']; ?></footer>
 </body>
 </html>

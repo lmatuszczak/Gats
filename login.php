@@ -1,3 +1,15 @@
+<?php
+    session_start();
+
+    if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true))
+    {
+        header('Location: index.php');
+        exit();
+    }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -30,30 +42,44 @@
         </div>
     </div>
 </nav>
-            <!-- <div class="form"><a href="login.php">Log in</a></div> -->
-            <!-- <div class="form"><a href="register.php">Sign Up</a></div> -->
 
-    
+<?php if(isset($_SESSION['e'])){
+    echo $_SESSION['e'];
+    unset($_SESSION['e']);
+    }
+?>
+
     <main id="mainA">
         <div class="content">
             
             <h1>Zaloguj się</h1>
-                <form action="">
+                <form action="zaloguj.php" method="POST">
                     <div class="txt_field">
-                        <input type="text" id="nick" required>
+                        <input type="text" id="nick" name="name" value="<?php //autouzupełnianie danych po błedzie
+                            if(isset($_SESSION['auto_name_L'])){
+                                echo $_SESSION['auto_name_L'];
+                                unset($_SESSION['auto_name_L']);
+                            }
+                        ?>">
                         <span></span>
                         <label for="nick">Nazwa użytkownika</label>
                     </div>
                     <div class="txt_field">
-                        <input type="password" id="pass1" required>
+                        <input type="password" id="pass1" name="password">
                         <span></span>
                         <label for="pass1">Hasło</label>
                     </div>
 
+                    <?php
+                            if(isset($_SESSION['errorLog'])){
+                                echo $_SESSION['errorLog']; // jeżeli zmienna isnieje to ją pokaż
+                                unset($_SESSION['errorLog']); // po odswiezeniu/zmianie usun
+                            } 
+                    ?>
                     <!-- LOGOWANIE FB, TW, Instagram -->
                     
                     <div style="text-align: left; font-size:14px;"">
-                        <a href="#" class="link-log" style="margin-top: 10px;">Nie pamiętasz hasła?</a>
+                        <a href="forgot-password.php" class="link-log" style="margin-top: 10px;">Nie pamiętasz hasła?</a>
                     </div>
 
                     <input type="submit" value="Zaloguj się" id="submit">
