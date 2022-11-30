@@ -30,6 +30,7 @@
                 <div><a href="#">Zadaj Pytanie</a></div>
             </div>
         </div>
+        
         <div id="nav-col-5">
             <a href="login.php">
                 <img src="img/paw.svg" alt="imageLogin">
