@@ -37,58 +37,15 @@
             $catdesc = $row['category_description'];
         }
     ?>
-    <?php 
-    $showAlert = false;
-    $method = $_SERVER['REQUEST_METHOD'];
-    if($method=='POST'){
-        //dopisywaanie do bazy danych
-        $th_title = $_POST['title'];
-        $th_desc = $_POST['desc'];
-        $sql = "INSERT INTO `threads` (`thread_title`, `thread_description`, `thread_cat_id`,
-         `thread_user_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '0', current_timestamp())";
-        $result = mysqli_query($conn, $sql) or trigger_error(mysqli_error($conn));
-        $showAlert = true;
-        if($showAlert){
-            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Gratulacje!</strong> Twój post został dodany.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>';
-        }
-    }
-    ?>
 
     <div class="container my-4">
         <div class="jumbotron">
             <h1 class="display-4">To jest forum o tematyce <?php echo $catname;?></h1>
             <p class="lead"><?php echo $catdesc;?></p>
             <hr class="my-4">
-            <!-- tu jest zły teks trzeba coś wymyślić -->
-            <p>Forum jest poświęcone dla posiadaczy <?php echo $catname;?>ów.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Regulamin</a>
         </div>
     </div>
 
-    <div class="container">
-        <h1 class="py-2">Rozpocznij dyskusje</h1>
-
-
-        <form action="<?php echo $_SERVER['REQUEST_URI']?>" method="post">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Tytuł</label>
-                <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">Tutaj napisz tytuł</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Treść postu...</label>
-                <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Dodaj post </button>
-        </form>
-
-
-    </div>
     <div class="container">
         <h1 class="py-2">Przeglądaj posty</h1>
 
@@ -98,28 +55,27 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "phpforum";
+        $database = "forum";
 
-       
-        
         $conn = mysqli_connect($servername, $username, $password, $database);
         $result = mysqli_query($conn, $sql) or trigger_error(mysqli_error($conn));
         $noResult = true;
-        while($row = mysqli_fetch_assoc($result)){
+        foreach($result as $row){
             $noResult = false;
             $id = $row['threads_id'];
             $title = $row['thread_title'];
             $desc = $row['thread_description'];
+
             $post_time = $row['timestamp'];
             
      
-    echo '<div class="media my-3">
-        <img src="images/userdef.png" width="34px" class="mr-3" alt="...">
-        <div class="media-body">
-            <h5 class="mt-0"> <a class="text-dark" href="watek2.php?threadsid='  . $id.  '">'. $title .'</a> '  . $post_time . '</h5>
-            '. $desc .'
-        </div>
-       </div>';
+            echo '<div class="media my-3">
+                <div class="media-body">
+                    <h5 class="mt-0"> <a class="text-dark" href="watek2.php?threadsid='  . $id.  '">'. $title. ' ' .  $post_time .'</a>'. '</h5>
+                    '. substr($desc, 0, 50) .'...
+                </div>
+            </div>
+            <hr class="my-4">';
 
         }
         // echo var_dump($noResult);
@@ -154,11 +110,3 @@
 </body>
 
 </html>
-
-<?php
-
-
-#include('connect.php');
-
-
-?>

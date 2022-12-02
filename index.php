@@ -43,7 +43,6 @@
             $desc = $row['category_description'];
             echo '<div class="col-md-4 my-2">
             <div class="card" style="width: 18rem;">
-                  <img src="images/card-' .$id. '.jpg"  class="card-img-top" alt="...">
                   <div class="card-body">
                       <h5 class="card-title"><a href="watek.php?catid='  . $id .  '">'  . $cat .  '</a></h5>
                       <p class="card-text">'  . $desc .  '</p>
@@ -54,6 +53,8 @@
 
           }
          ?>
+  <footer>Copyright © 2022 <?php if(isset($_SESSION['userLog'])) echo $_SESSION['userLog']; ?></footer>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>

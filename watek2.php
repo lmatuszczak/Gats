@@ -61,21 +61,11 @@
     }
     ?>
 
-
-
-
-
-
-
-
     <div class="container my-4">
         <div class="jumbotron">
             <h1 class="display-4"> <?php echo $title;?></h1>
             <p class="lead"><?php echo $desc;?></p>
             <hr class="my-4">
-            <!-- tu jest zły teks trzeba coś wymyślić -->
-            <p></p>
-            <p>Post dodany przez użytkownika:<b> Jakiś tam </b> <!--o ' . $post_time . '--></p>
         </div>
     </div>
 
@@ -102,7 +92,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "phpforum";
+        $database = "forum";
 
        
         
@@ -114,14 +104,14 @@
             $id = $row['comment_id'];
             $content = $row['comment_content'];
             $comment_time = $row['comment_time'];
-                 
+
     echo '<div class="media my-3">
-        <img src="images/userdef.png" width="34px" class="mr-3" alt="...">
         <div class="media-body">
-           <p class="font-weight-bold my-0">Jakiś użytkownik o ' . $comment_time . ' </p>
+           <p class="font-weight-bold my-0"> o' . $comment_time . ' </p>
             '. $content .'
         </div>
-       </div>';
+       </div>
+       <hr class="my-4">';
 
         }
 
@@ -129,7 +119,7 @@
             echo '<div class="jumbotron jumbotron-fluid">
             <div class="container">
               <h1 class="display-4">Brak dyskusji</h1>
-              <p class="lead">Dodaj pierwszy post.</p>
+              <p class="lead">Dodaj pierwszy komentarz.</p>
             </div>
           </div>';
         }
