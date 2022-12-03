@@ -35,6 +35,8 @@ if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true))
 <style>
       #maincolor{
         background-color:#4E5975 !important;
+        min-height: 9vh !important;
+
       }
     </style>
 </head>

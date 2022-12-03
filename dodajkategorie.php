@@ -8,7 +8,16 @@
     <style>
       #maincolor{
         background-color:#4E5975 !important;
+        min-height: 9vh !important;
+
       }
+      #footer {
+        background-color: #4E5975;
+        padding: 30px 10px 0px 10px;
+        min-height:11vh;
+        bottom: 0;
+        width: 100%;
+    }
     </style>
     <title>Panel Administratora</title>
 </head>
@@ -57,5 +66,7 @@
       <button type="submit" name="dodaj_kategorie" class="btn btn-primary">Dodaj kategorie</button>
     </form>
   </div>
+  <?php include ('./footer.php')?>
+
 </body>
 </html>
