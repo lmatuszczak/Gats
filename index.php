@@ -1,236 +1,75 @@
-<!DOCTYPE HTML>
-<html lang="pl">
+<?php
+    require './connect.php';
+?>
+
+<!doctype html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-    <link href="home.css" rel="stylesheet">
-    <title>Strona Glowna</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <style>
+      #maincolor{
+        background-color:#4E5975 !important;
+        min-height: 9vh !important;
+        color: white !important;
+      }
+      #footer {
+        background-color: #4E5975;
+        padding: 30px 10px 0px 10px;
+        min-height:11vh;
+        bottom: 0;
+        width: 100%;
+    }
+    </style>
+
+
+  
+    <title>Forum do czegoś</title>
 </head>
+
 <body>
-<nav>
-    <div id="wrapperNav">
-        <div id="navContainer">
-            <div id="nav-col-1">
-                <a href="#">
-                    LOGO
-                </a>
-            </div>
-            <div id="navLink">
-                <div><a href="#">Rasy</a></div>
-                <div><a href="#">Kategorie</a></div>
-                <div><a href="#">Zadaj Pytanie</a></div>
-            </div>
-        </div>
-        <div id="nav-col-5">
-            <a href="#">
-                <img src="img/paw.svg" alt="imageLogin">
-            </a>
-        </div>
-    </div>
-</nav>
+    <?php include('./navbar.php')?>
 
-<main>
-    <section id="main-left-column">
-        <header class="headerMain">
-            <h1>Najnowsze pytania i odpowiedzi</h1>
-        </header>
-        <article>
-            <div class="articleHeader-row-1">
-                <div class="containerAnswer">
-                    <div class="answer">
-                        <p>0</p>
-                        <p>odpowiedzi</p>
-                    </div>
-                </div>
-                <div class="titleArticle">
-                    <a href="#">Jaki kot dla dzieci?</a>
-                </div>
-            </div>
-            <div class="articleHeader-row-2">
-                <div class="viewArticle">
-                    <p>0 wizyt</p>
-                </div>
-                <div class="categories">
-                    <a href="#">
-                        <div class="category">Egzotyczne</div>
-                    </a>
-                    <a href="#">
-                        <div class="category">Tanie</div>
-                    </a>
-                    <a href="#">
-                        <div class="category">Spokojne</div>
-                    </a>
-                </div>
-                <div class="dateArticle">
-                    21/10/2021
-                </div>
-            </div>
-        </article>
-        <article>
-            <div class="articleHeader-row-1">
-                <div class="containerAnswer">
-                    <div class="answer">
-                        <p>0</p>
-                        <p>odpowiedzi</p>
-                    </div>
-                </div>
-                <div class="titleArticle">
-                    <a href="#">Jaki kot dla dzieci?</a>
-                </div>
-            </div>
-            <div class="articleHeader-row-2">
-                <div class="viewArticle">
-                    <p>0 wizyt</p>
-                </div>
-                <div class="categories">
-                    <a href="#">
-                        <div class="category">Egzotyczne</div>
-                    </a>
-                    <a href="#">
-                        <div class="category">Tanie</div>
-                    </a>
-                    <a href="#">
-                        <div class="category">Spokojne</div>
-                    </a>
-                </div>
-                <div class="dateArticle">
-                    21/10/2021
-                </div>
-            </div>
-        </article>
-        <article>
-            <div class="articleHeader-row-1">
-                <div class="containerAnswer">
-                    <div class="answer">
-                        <p>0</p>
-                        <p>odpowiedzi</p>
-                    </div>
-                </div>
-                <div class="titleArticle">
-                    <a href="#">Jaki kot dla dzieci?</a>
-                </div>
-            </div>
-            <div class="articleHeader-row-2">
-                <div class="viewArticle">
-                    <p>0 wizyt</p>
-                </div>
-                <div class="categories">
-                    <a href="#">
-                        <div class="category">Egzotyczne</div>
-                    </a>
-                    <a href="#">
-                        <div class="category">Tanie</div>
-                    </a>
-                    <a href="#">
-                        <div class="category">Spokojne</div>
-                    </a>
-                </div>
-                <div class="dateArticle">
-                    21/10/2021
-                </div>
-            </div>
-        </article>
-        <article>
-            <div class="articleHeader-row-1">
-                <div class="containerAnswer">
-                    <div class="answer">
-                        <p>0</p>
-                        <p>odpowiedzi</p>
-                    </div>
-                </div>
-                <div class="titleArticle">
-                    <a href="#">Jaki kot dla dzieci?</a>
-                </div>
-            </div>
-            <div class="articleHeader-row-2">
-                <div class="viewArticle">
-                    <p>0 wizyt</p>
-                </div>
-                <div class="categories">
-                    <a href="#">
-                        <div class="category">Egzotyczne</div>
-                    </a>
-                    <a href="#">
-                        <div class="category">Tanie</div>
-                    </a>
-                    <a href="#">
-                        <div class="category">Spokojne</div>
-                    </a>
-                </div>
-                <div class="dateArticle">
-                    21/10/2021
-                </div>
-            </div>
-        </article>
-        <article>
-            <div class="articleHeader-row-1">
-                <div class="containerAnswer">
-                    <div class="answer">
-                        <p>0</p>
-                        <p>odpowiedzi</p>
-                    </div>
-                </div>
-                <div class="titleArticle">
-                    <a href="#">Jaki kot dla dzieci?</a>
-                </div>
-            </div>
-            <div class="articleHeader-row-2">
-                <div class="viewArticle">
-                    <p>0 wizyt</p>
-                </div>
-                <div class="categories">
-                    <a href="#">
-                        <div class="category">Egzotyczne</div>
-                    </a>
-                    <a href="#">
-                        <div class="category">Tanie</div>
-                    </a>
-                    <a href="#">
-                        <div class="category">Spokojne</div>
-                    </a>
-                </div>
-                <div class="dateArticle">
-                    21/10/2021
-                </div>
-            </div>
-        </article>
-    </section>
-    <aside>
-        <section id="main-right-column">
-            <div id="webSort" class="headerMain">
-                <h1>
-                    Zmień sortowanie
-                </h1>
-                <img src="img/sortButton.svg">
-            </div>
-            <div id="asideComment">
-                <h1>Najczesciej komentowane</h1>
-                <hr>
-                <ol>
-                    <li>Czy wasz kot też ...<span>100</span></li>
-                    <li>Czy wasz kot też ...<span>100</span></li>
-                    <li>Czy wasz kot też ...<span>100</span></li>
-                    <li>Czy wasz kot też ...<span>1</span></li>
-                    <li>Czy wasz kot też ...<span>100</span></li>
-                </ol>
-            </div>
-            <div id="asideRegulations">
-                <h1>Regulamin</h1>
-                <hr>
-                <ol>
-                    <li>Wstęp</li>
-                    <li>Zasady korzystania z Serwisu</li>
-                    <li>Zgłoszenia</li>
-                    <li>Konto</li>
-                    <li>Odpowiedzialność</li>
-                    <li>Postanowienia końcowe</li>
-                </ol>
-            </div>
-        </section>
+    <div class="container">
+        <h2 class="text-center my-3">Forum - Kategorie</h2>
+        <div class="row">
 
-    </aside>
-</main>
-<footer>Copyright © 2022</footer>
+        <?php 
+          $sql = "SELECT * FROM `kategorie`";
+
+          $result = mysqli_query($conn, $sql) or trigger_error(mysqli_error($conn));
+          while($row = mysqli_fetch_assoc($result)){
+            //echo $row['category_id'];
+            //echo $row['category_name'];
+            $id = $row['category_id'];
+            $cat = $row['category_name'];
+            $desc = $row['category_description'];
+            echo '<div class="col-md-4 my-2">
+            <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                      <h5 class="card-title"><a href="watek.php?catid='  . $id .  '">'  . $cat .  '</a></h5>
+                      <p class="card-text">'  . $desc .  '</p>
+                      <a href="watek.php?catid='  . $id .  '" class="btn btn-primary">Przeglądaj posty</a>
+                  </div>
+              </div>
+            </div>';
+
+          }
+         ?>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+
+<?php include ('./footer.php')?>
 </body>
 </html>
