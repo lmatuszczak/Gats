@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// Zakaz przechodzenia na podstonę
 if ((!isset($_SESSION['zalogowany']))) {
 	header('Location: ./index.php');
 	exit(); // koniec - nie wykonuj dalszej części kodu
@@ -8,7 +9,7 @@ if ((!isset($_SESSION['zalogowany']))) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
 	<meta charset="utf-8">
@@ -20,11 +21,11 @@ if ((!isset($_SESSION['zalogowany']))) {
 			background-color: #4E5975 !important;
 		}
 	</style>
-	<title>Panel Użytkownika</title>
+	<title>Panel</title>
 </head>
 
 <body>
-<?php
+	<?php
 	include_once('./navbar.php');
 
 	try {
@@ -40,11 +41,6 @@ if ((!isset($_SESSION['zalogowany']))) {
 				$title = $post['thread_title'];
 				$desc = $post['thread_description'];
 				$editcatid = $post['thread_cat_id'];
-
-				// if ($post['thread_user_id'] != $_SESSION['userid']) { ????????????!!!!!!!!!!!!!!!!!!!!!!!
-				// 	header('Location: ./index.php');
-				// 	exit(); // koniec - nie wykonuj dalszej części kodu
-				// }
 			}
 		}
 	} catch (Exception $e) {
@@ -55,40 +51,37 @@ if ((!isset($_SESSION['zalogowany']))) {
 
 
 	if (isset($_POST['edytuj_post'])) {
-		try{
+		try {
 
 			$post_id = mysqli_real_escape_string($conn, $_POST['edytuj_post']);
-	
+
 			$updatetitle = mysqli_real_escape_string($conn, $_POST['updatetitle']);
 			$updatedesc = mysqli_real_escape_string($conn, $_POST['updatedesc']);
 			$updatecat = mysqli_real_escape_string($conn, $_POST['updatecat']);
 
 			// uzytkownik moze zmienic tylko tytul i tresc postu
-			if($_SESSION['accountrole'] == "user"){
+			if ($_SESSION['accountrole'] == "user") {
 				$query = "UPDATE threads SET thread_title='$updatetitle', thread_description='$updatedesc' WHERE threads_id='$post_id' ";
 			}
 			// admin moze dodatkowo przeniesc wpis do innej kategorii
-			else{
+			else {
 				$query = "UPDATE threads SET thread_title='$updatetitle', thread_description='$updatedesc', thread_cat_id='$updatecat' WHERE threads_id='$post_id' ";
 			}
-	
-			$query_run = $conn -> query($query);
-	
-			if($query_run && $_SESSION['accountrole']=="admin") {
+
+			$query_run = $conn->query($query);
+
+			if ($query_run && $_SESSION['accountrole'] == "admin") {
 				header("Location: posty.php");
-			}
-			else if ($query_run) {
+			} else if ($query_run) {
 				header("Location: mojeposty.php");
-			}
-			else {
+			} else {
 				throw new Exception();
 			}
-		}
-		catch(Exception $e){
+		} catch (Exception $e) {
 			$_SESSION['e'] = "<h2 style='color:red; text-align:center; padding-top:20px'>Błąd serwera. Przepraszamy za problemy. Spróbuj później.</h2>";
 		}
 	}
-?>
+	?>
 
 
 
@@ -106,43 +99,35 @@ if ((!isset($_SESSION['zalogowany']))) {
 			<div class="form-group">
 				<!-- <label for="exampleFormControlTextarea1">Kategoria: </label>
 				<select class="form-select" aria-label="Default select example" id="updatecat" name="updatecat"> -->
-					<?php
+				<?php
 
-						try{									
-							$sql = "SELECT * FROM `kategorie`";
+				try {
+					$sql = "SELECT * FROM `kategorie`";
 
-							if($result = $conn -> query($sql)){
-								
-								if($_SESSION['accountrole'] == "admin"){
-									echo '<label for="exampleFormControlTextarea1">Kategoria: </label>';
-									echo '<select class="form-select" aria-label="Default select example" id="updatecat" name="updatecat">';
+					if ($result = $conn->query($sql)) {
+						// Jeśli zalogowany admin to wyświetl opcje zmiany kategorii postu
+						if ($_SESSION['accountrole'] == "admin") {
+							echo '<label for="exampleFormControlTextarea1">Kategoria: </label>';
+							echo '<select class="form-select" aria-label="Default select example" id="updatecat" name="updatecat">';
 
-									while($row = $result -> fetch_assoc()){
-										echo '<option value="' . $row['category_id'] . '" id="updatecat" name="updatecat">' . $row['category_name'] . '</option>';
-									}
-								}
-									// if (($row['category_id'] == $editcatid) && ($_SESSION['accountrole'] == "admin")) {
-									// 	echo '<option value="' . $row['category_id'] . '" id="updatecat" name="updatecat" selected>' . $row['category_name'] . '</option>';
-									// } else {
-									// 	echo '<option value="' . $row['category_id'] . '" id="updatecat" name="updatecat">' . $row['category_name'] . '</option>';
-									// }
-								//$conn -> close(); // po wykonaniu pracy zamknij bazę
+							while ($row = $result->fetch_assoc()) {
+								echo '<option value="' . $row['category_id'] . '" id="updatecat" name="updatecat">' . $row['category_name'] . '</option>';
 							}
-							else throw new Exception();
 						}
-						catch(Exception $e){
-							$_SESSION['e'] = "<h2 style='color:red; text-align:center; padding-top:20px'>Błąd serwera. Przepraszamy za problemy. Spróbuj później.</h2>";
-							// $_SESSION['e'] = $e->getMessage();
-						}
+					} else throw new Exception();
+				} catch (Exception $e) {
+					$_SESSION['e'] = "<h2 style='color:red; text-align:center; padding-top:20px'>Błąd serwera. Przepraszamy za problemy. Spróbuj później.</h2>";
+					// $_SESSION['e'] = $e->getMessage();
+				}
 
-					$conn -> close();
-					?>
+				$conn->close();
+				?>
 				</select>
 			</div>
 			<button type="submit" name="edytuj_post" value='<?= $postid; ?>' class="btn btn-primary">Edytuj post</button>
 		</form>
 	</div>
-	<?php include_once ('./footer.php')?>
+	<?php include_once('./footer.php') ?>
 </body>
 
 </html>

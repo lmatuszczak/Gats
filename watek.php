@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <!-- Required meta tags -->
@@ -13,7 +13,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="navbar-style.css">
-    <title>Forum do czegoś</title>
+    <title>Forum - sekcja postów</title>
 
     <style>
         #maincolor {
@@ -23,30 +23,28 @@ session_start();
 </head>
 
 <body>
-    <?php 
-        include_once('./navbar.php');
+    <?php
+    include_once('./navbar.php');
 
-        if(isset($_SESSION['e'])){
-            echo $_SESSION['e'];
-            unset($_SESSION['e']);
+    if (isset($_SESSION['e'])) {
+        echo $_SESSION['e'];
+        unset($_SESSION['e']);
+    }
+
+    try {
+        require_once('./connect.php');
+
+        $id = $_GET['catid'];
+        $sql = "SELECT * FROM `kategorie` WHERE category_id=$id";
+
+        $result = $conn->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            $catname = $row['category_name'];
+            $catdesc = $row['category_description'];
         }
-
-        try {
-            require_once('./connect.php');
-
-            $id = $_GET['catid'];
-            $sql = "SELECT * FROM `kategorie` WHERE category_id=$id";
-        
-            $result = $conn -> query($sql);
-            while ($row = $result -> fetch_assoc()) {
-                $catname = $row['category_name'];
-                $catdesc = $row['category_description'];
-            }
-
-        }
-        catch(Exception $e){
-			$_SESSION['e'] = "<h2 style='color:red; text-align:center; padding-top:20px'>Błąd serwera. Przepraszamy za problemy. Spróbuj później.</h2>";
-		}
+    } catch (Exception $e) {
+        $_SESSION['e'] = "<h2 style='color:red; text-align:center; padding-top:20px'>Błąd serwera. Przepraszamy za problemy. Spróbuj później.</h2>";
+    }
 
     ?>
 
@@ -62,45 +60,44 @@ session_start();
         <h1 class="py-2">Przeglądaj posty</h1>
 
         <?php
-            try{
-                //$id = $_GET['catid'];
-                $sql2 = "SELECT * FROM `threads` WHERE thread_cat_id=$id";
-        
-                $result2 = $conn -> query($sql2);
-                
-                $noResult = true;
-                foreach ($result2 as $row) {
-                    $noResult = false;
-                    $id = $row['threads_id'];
-                    $title = $row['thread_title'];
-                    $desc = $row['thread_description'];
-        
-                    $post_time = $row['timestamp'];
-        
-        
-                    echo '<div class="media my-3">
+        try {
+            //$id = $_GET['catid'];
+            $sql2 = "SELECT * FROM `threads` WHERE thread_cat_id=$id";
+
+            $result2 = $conn->query($sql2);
+
+            $noResult = true;
+            foreach ($result2 as $row) {
+                $noResult = false;
+                $id = $row['threads_id'];
+                $title = $row['thread_title'];
+                $desc = $row['thread_description'];
+
+                $post_time = $row['timestamp'];
+
+
+                echo '<div class="media my-3">
                         <div class="media-body">
                             <h5 class="mt-0"> <a class="text-dark" href="watek2.php?threadsid='  . $id .  '">' . $title . ' | ' .  $post_time . '</a>' . '</h5>
                             ' . substr($desc, 0, 50) . '...
                         </div>
                     </div>
                     <hr class="my-4">';
-                }
-                // echo var_dump($noResult);
-                if ($noResult) {
-                    echo '<div class="jumbotron jumbotron-fluid">
+            }
+            // echo var_dump($noResult);
+            if ($noResult) {
+                echo '<div class="jumbotron jumbotron-fluid">
                     <div class="container">
                       <h1 class="display-4">Brak dyskusji</h1>
                       <p class="lead">Dodaj pierwszy post.</p>
                     </div>
                   </div>';
-                }
             }
-            catch(Exception $e){
-                $_SESSION['e'] = "<h2 style='color:red; text-align:center; padding-top:20px'>Błąd serwera. Przepraszamy za problemy. Spróbuj później.</h2>";
-                //$_SESSION['e'] = $e->getMessage();
-            }
-            $conn -> close();
+        } catch (Exception $e) {
+            $_SESSION['e'] = "<h2 style='color:red; text-align:center; padding-top:20px'>Błąd serwera. Przepraszamy za problemy. Spróbuj później.</h2>";
+            //$_SESSION['e'] = $e->getMessage();
+        }
+        $conn->close();
         ?>
 
 
@@ -119,7 +116,7 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
-    <?php include_once ('./footer.php')?>
+    <?php include_once('./footer.php') ?>
 </body>
 
 </html>

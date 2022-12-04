@@ -38,13 +38,6 @@ if(isset($_POST['name'])){
                         unset($_SESSION['errorLog']); // udało się zalogować? tak = usuń, zmienna niepotrzebna
                         
                         $res -> free(); // czysczenie rezultatów zapytania, posiadamy je w zmiennych
-                        // W zależności kto się zaloogwał odpowiednio go przekierujemy
-                        // if($row['actor'] == "admin"){
-                        //     header('Location: index.php'); // UDANE LOGOWANIE = PRZEJDŹ DO STRONY GŁOWNEJ admina
-                        // }
-                        // if($row['actor'] == "user"){
-                        //     header('Location: index.php'); // UDANE LOGOWANIE = PRZEJDŹ DO STRONY GŁOWNEJ usera
-                        // }
                         header('Location: index.php'); // UDANE LOGOWANIE = PRZEJDŹ DO STRONY GŁOWNEJ
                     }
                     else{
@@ -66,11 +59,8 @@ if(isset($_POST['name'])){
     }
     catch(Exception $s)
     {
-        //echo "Błąd serwera. Przepraszamy za problemy. Spróbuj później.";
-        // echo $s->getMessage();
         //$_SESSION['e'] = $s->getMessage();
         $_SESSION['e'] = "<h2 style='color:red; text-align:center; padding-top:20px'>Błąd serwera. Przepraszamy za problemy. Spróbuj później.</h2>";
         header('Location: login.php');
     }
 }
-?>

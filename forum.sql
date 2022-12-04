@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Gru 2022, 00:23
+-- Czas generowania: 04 Gru 2022, 20:33
 -- Wersja serwera: 10.4.25-MariaDB
 -- Wersja PHP: 8.1.10
 
@@ -40,10 +40,11 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `comment_content`, `threads_id`, `comment_by`, `comment_time`) VALUES
-(66, 'Proponuje diete MŻ', 1, 4, '2022-12-04 00:16:56'),
-(67, 'Widzialem takiego w biedrze ', 30, 4, '2022-12-04 00:17:50'),
-(68, 'Jestem trzeźwy kiedy to pisze ◙', 28, 4, '2022-12-04 00:19:44'),
-(69, 'Sum tzw. olimpijczyk', 42, 4, '2022-12-04 00:20:16');
+(70, 'Jeśli to Garfield to wszystko w porządku, w innym wypadku proponuję dla kota dietę MŻ i serię brzuszków 3 x 10 powtórzeń co 3 dni.', 1, 4, '2022-12-04 20:26:02'),
+(71, 'Nie wiem. Pozdrawiam', 28, 4, '2022-12-04 20:26:23'),
+(72, 'Można jak najbardziej.', 30, 4, '2022-12-04 20:29:08'),
+(73, 'Prędkość lotu bielika w locie nurkowym może wynieść nawet 240 km/h.', 43, 4, '2022-12-04 20:30:38'),
+(74, 'Polecam dietę wegańską. Stosuje u mojego kocura i jest chudziutki jak palec', 1, 5, '2022-12-04 20:32:46');
 
 -- --------------------------------------------------------
 
@@ -64,10 +65,9 @@ CREATE TABLE `kategorie` (
 
 INSERT INTO `kategorie` (`category_id`, `category_name`, `category_description`, `created`) VALUES
 (1, 'Kot', 'Kot to udomowiony gatunek małego ssaka mięsożernego. Jest to jedyny udomowiony gatunek w rodzinie Felidae i jest powszechnie określany jako kot domowy lub kot domowy, aby odróżnić go od dzikich członków rodziny.', '2022-11-10 13:40:17'),
-(2, 'Pies', 'Pies jest udomowionym potomkiem wilka. Nazywany również psem domowym, pochodzi od wymarłego wilka plejstoceńskiego, a współczesny wilk jest najbliższym żyjącym krewnym psa. Pies był pierwszym gatunkiem udomowionym przez łowców-zbieraczy ponad 15 000 lat t', '2022-11-10 13:41:26'),
-(3, 'Emu', 'Emu jest drugim co do wysokości żyjącym ptakiem po bezgrzebieniowych krewniakach strusia. Występuje endemicznie w Australii, gdzie jest największym rodzimym ptakiem i jedynym zachowanym przedstawicielem rodzaju Dromaius.', '2022-11-10 15:55:33'),
-(8, 'Sum', 'Przez wiele lat na temat największej słodkowodnej ryby Europy narosło mnóstwo legend i mitów, które powtarzane po dziś dzień, stały się wyznacznikiem tego jak współcześnie społeczeństwo postrzega tę niezwykłą rybę.', '2022-12-03 23:05:56'),
-(9, 'Orzeł biały', 'jest to orzeł o barwie białej (która odpowiada srebru), np. na pieczęci majestatycznej króla Przemysła II albo w Herbie Miasta Frankfurt nad Menem', '2022-12-04 00:21:40');
+(2, 'Pies', 'Pies jest udomowionym potomkiem wilka. Nazywany również psem domowym, pochodzi od wymarłego wilka plejstoceńskiego, a współczesny wilk jest najbliższym żyjącym krewnym psa. Pies był pierwszym gatunkiem udomowionym przez łowców-zbieraczy ponad 15 000 lat', '2022-11-10 13:41:26'),
+(3, 'Ryby', 'tradycyjna nazwa zmiennocieplnych, pierwotnie wodnych kręgowców, oddychających skrzelami i poruszających się za pomocą płetw. Obejmuje bezżuchwowce krągłouste (Cyclostomata) oraz mające szczęki ryby właściwe (Pisces).', '2022-11-10 15:55:33'),
+(9, 'Orzeł biały', 'Gatunek dużego ptaka drapieżnego z rodziny jastrzębiowatych (Accipitridae). Występuje w centralnej i północnej Palearktyce, od Islandii po Japonię; najbardziej na zachód wysunięta populacja zasiedla Grenlandię.', '2022-12-04 00:21:40');
 
 -- --------------------------------------------------------
 
@@ -89,10 +89,10 @@ CREATE TABLE `threads` (
 --
 
 INSERT INTO `threads` (`threads_id`, `thread_title`, `thread_description`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES
-(1, 'Kot je za dużo', 'Mój kot za dużo je, waży już 15kg nie wiem co robić POMOCY !!11111jedenjeden', 1, 4, '2022-11-10 17:37:22'),
-(28, 'wedzisko pod sandacza', 'gdzie lowic sandacze na 3 kijach', 3, 4, '2022-12-02 18:37:34'),
-(30, 'Franio', 'Post Franka\r\nEdytowane Admin Pśa', 2, 5, '2022-12-03 03:07:51'),
-(42, 'amidn dodaje', 'rybki', 8, 4, '2022-12-03 23:20:29');
+(1, 'Kot je za dużo', 'Mój kot za dużo je, waży już 15kg nie wiem co robić POMOCY !!', 1, 4, '2022-11-10 17:37:22'),
+(28, 'Wędzisko pod Sandacza', 'Gdzie w Poznaniu można legalnie łowić duże sandacze?', 3, 4, '2022-12-02 18:37:34'),
+(30, 'Imię dla psa', 'Czy psa można nazwać Franek', 2, 5, '2022-12-03 03:07:51'),
+(43, 'Prędkość Bielika', 'Czy ktoś może wie jaką prędkość osiągają Bieliki?', 9, 4, '2022-12-04 20:11:56');
 
 -- --------------------------------------------------------
 
@@ -156,7 +156,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `comment_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT dla tabeli `kategorie`
@@ -168,7 +168,7 @@ ALTER TABLE `kategorie`
 -- AUTO_INCREMENT dla tabeli `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `threads_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `threads_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`

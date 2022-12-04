@@ -4,6 +4,7 @@ session_start();
 //mysqli_report(MYSQLI_REPORT_OFF); // żeby nie sypało fatal errorami
 mysqli_report(MYSQLI_REPORT_STRICT);
 
+// Zakaz przechodzenia na podstonę
 if (!isset($_POST['email']))
 	{
 		header('Location: register.php');
