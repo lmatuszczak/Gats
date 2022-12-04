@@ -13,6 +13,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="navbar-style.css">
+    <link rel="stylesheet" href="Pagination.css">
     <title>Forum - sekcja postów</title>
 
     <style>
@@ -26,6 +27,14 @@ session_start();
     <?php
     include_once('./navbar.php');
 
+    $per_page_record = 3;
+    if (isset($_GET["page"])) {
+        $page = $_GET["page"];
+    } else {
+        $page = 1;
+    }
+    $start_from = ($page - 1) * $per_page_record;
+
     if (isset($_SESSION['e'])) {
         echo $_SESSION['e'];
         unset($_SESSION['e']);
@@ -35,6 +44,7 @@ session_start();
         require_once('./connect.php');
 
         $id = $_GET['catid'];
+        $categoryId = $id;
         $sql = "SELECT * FROM `kategorie` WHERE category_id=$id";
 
         $result = $conn->query($sql);
@@ -62,7 +72,7 @@ session_start();
         <?php
         try {
             //$id = $_GET['catid'];
-            $sql2 = "SELECT * FROM `threads` WHERE thread_cat_id=$id";
+            $sql2 = "SELECT * FROM `threads` WHERE thread_cat_id=$id LIMIT " . $start_from . " , " . $per_page_record;
 
             $result2 = $conn->query($sql2);
 
@@ -97,7 +107,34 @@ session_start();
             $_SESSION['e'] = "<h2 style='color:red; text-align:center; padding-top:20px'>Błąd serwera. Przepraszamy za problemy. Spróbuj później.</h2>";
             //$_SESSION['e'] = $e->getMessage();
         }
-        $conn->close();
+
+        $sql = "SELECT COUNT(*) FROM `threads`";
+        $rs_result = $conn->query($sql);
+        $row = $rs_result -> fetch_row();
+        $total_records = $row[0];
+        echo "</br>";
+        $total_pages = ceil($total_records / $per_page_record);
+        $pagLink = "";
+        echo "<div class='pagination'>";
+        if ($page >= 2) {
+            echo "<a href='watek.php?page=" . ($page - 1) . "&catid=" . $categoryId ."'>  Prev </a>";
+        }
+
+        for ($i = 1; $i <= $total_pages; $i++) {
+            if ($i == $page) {
+                $pagLink .= "<a class = 'active' href='watek.php?page=" . $i . "&catid=" . $categoryId ."'>" . $i . " </a>";
+            } else {
+                $pagLink .= "<a href='watek.php?page=" . $i . "&catid=" . $categoryId ."'>
+                " . $i . " </a>";
+            }
+        };
+        echo $pagLink;
+
+        if ($page < $total_pages) {
+            echo "<a href='watek.php?page=" . ($page + 1) . "&catid=" . $categoryId ."'>  Next </a>";
+        }
+        echo "</div>";
+        $conn->close(); // po wykonaniu pracy zamknij bazę
         ?>
 
 
