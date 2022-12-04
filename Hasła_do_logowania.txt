@@ -1,0 +1,7 @@
+CREATE TABLE `forum`.`users` (`id` INT NOT NULL AUTO_INCREMENT , `user` VARCHAR(255) NOT NULL , `pass` VARCHAR(255) NOT NULL ,
+ `email` VARCHAR(255) NOT NULL , `actor` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`),
+ UNIQUE (`email`), UNIQUE (`user`)) ENGINE = InnoDB;
+
+
+user: Franek	email: franek.kimono@gmail.com		hasło: qwerty123!
+admin: Krzysztof	email: krzysztof.jezyna@gmail.com	hasło: qwerty123@

@@ -1,0 +1,74 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap);
+
+*{
+    font-family: "Roboto", sans-ser !important;
+    box-sizing: border-box;
+}
+
+.navbar{
+    position: sticky;
+    width: 100%;
+    top: 0;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.nav-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7c7af1;
+    margin: 10px;
+    border-radius: 10px;
+    height: 50px;
+    padding: 10px;
+}
+
+.nav-link:hover{
+    opacity: 0.7;
+}
+
+.btn-primary{
+    color: #fff;
+    background-color: #4E5975;
+    border-color: #4E5975;
+}
+
+.btn-primary:hover{
+    background-color: #4E5975;
+    border-color: #4E5975;
+}
+
+.btn-nav{
+    color: #fff;
+    background-color: #7c7af1;
+    border-color: #7c7af1;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.btn-nav:hover{
+    background-color: #7c7af1;
+    border-color: #7c7af1;
+}
+
+#footer {
+    height: 80px;
+    background-color: #4E5975;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #FFFFFF;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    font-weight: bold;   
+}
